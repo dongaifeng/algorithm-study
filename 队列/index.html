@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./queue.js"></script>
+<script src="./priorityQueue.js"></script>
+<script>
+
+  let pq = new PriorityQueue()
+  pq.enqueue('aaa', 1)
+  pq.enqueue('bbb', 100)
+  pq.enqueue('bbb', 10)
+
+  console.log(pq)
+
+  // let queue = new Queue()
+
+  // queue.enqueue('aaa')
+  // queue.enqueue('bbb')
+  // queue.enqueue('bbb')
+
+  // console.log(queue.size())
+  // console.log(queue.toString())
+
+
+  console.log(passGame(['a', 'b', 'c', 'd'], 3))
+  // 击鼓传花游戏
+  function passGame(nameArr, num) {
+    let queue = new Queue();
+    // 将人员名单加入队列
+    for (let i = 0; i < nameArr.length; i++) {
+      queue.enqueue(nameArr[i])
+    }
+    // 当只剩一个人时退出
+    while (queue.size() > 1) {
+      // 把num之前的人从头删除，加到尾，那么第一位就是num对应的人
+      for (let i = 0; i < num - 1; i++) {
+        queue.enqueue(queue.dequeue())
+      }
+      // num对应的人 直接删除
+      queue.dequeue()
+    }
+
+    let endName = queue.front()
+    return nameArr.indexOf(endName)
+  }
+
+
+</script>

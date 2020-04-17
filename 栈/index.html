@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src="./stack.js"></script>
+<script>
+let stack = new Stack();
+console.log(stack)
+
+stack.push('a')
+stack.push('b')
+stack.pop()
+alert(stack.peek())
+alert(stack.size())
+alert(stack)
+
+function dec2bin(num){
+  let str = ''
+  let stack = new Stack()
+  while(num > 0){
+    stack( num % 2)
+    num = Math.floor(num / 2)
+  }
+
+  while(!stack.isEmpty()){
+    str += stack.pop
+  }
+  return str
+}
+
+</script>
