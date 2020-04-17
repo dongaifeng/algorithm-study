@@ -58,9 +58,78 @@ class LinkenList {
     return true
   }
 
+  get(position){
+    if (position < 0 || position > this.length) return false
+    let current = this.head
+    let index = 0
+    while(index++ < position){
+      current = current.next
+    }
 
-  remove() {
+    return current.data
+  }
 
+  indexOf(data){
+    if (position < 0 || position > this.length) return false
+    let current = this.head
+    let index = 0
+    while(current){
+      if(current.data === data){
+        return index
+      }
+      current = current.next
+      index +=1
+    }
+
+    return -1
+  }
+
+  update(position,newData){
+    if (position < 0 || position > this.length) return false
+    let current = this.head
+    let index = 0
+    while(index++ < position){
+      current = current.next
+    }
+    current.data = newData
+    return true
+
+  }
+
+  removeAt(position){
+    if(position < 0 || position> this.length) return null
+    let index = 0
+    let current = this.head
+
+    if(this.length == 1){
+      this.head = this.tail = null
+    } else {
+      if(position === 0) {
+        this.head.next.prev = null
+        this.head = this.head.next
+      } else if(position === this.length-1) {
+        this.tail.prev.next = null
+        this.tail = this.tail.next
+      } else {
+        
+        while(index++ < current){
+          current = current.next
+        }
+        current.prev.next = current.next
+        current.next.prev = current.prev
+      }
+
+      this.length -= 1
+      return current
+    }
+
+
+
+  }
+
+  remove(data) {
+    let index = this.indexOf(data)
+    return this.removeAt(index)
   }
 
   // 获取某节点
