@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src="./Bst.js"></script>
+<script>
+
+let nst = new Bst()
+
+nst.insert(9)
+nst.insert(13)
+nst.insert(12)
+nst.insert(14)
+nst.insert(5)
+nst.insert(7)
+nst.insert(25)
+nst.postOrderTraverse()
+
+console.log(nst.remove(13))
+console.log('------------')
+nst.postOrderTraverse()
+// console.log(nst)
+// nst.preOrderTraverse()
+// nst.inOrderTraverse()
+// nst.postOrderTraverse()
+// console.log(nst.min(), nst.max())
+
+
+</script>

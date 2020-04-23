@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script src="./Hash.js"></script>
+<script>
+
+let hashTable = new HashTable()
+
+hashTable.put('aaa', '111')
+hashTable.put('drs', '222')
+hashTable.put('weq', '333')
+hashTable.put('wreq', '333')
+hashTable.put('weeq', '333')
+
+
+console.log(hashTable.storage)
+hashTable.put('www', '333')
+console.log(hashTable.storage)
+
+
+</script>
