@@ -20,7 +20,7 @@
   太简单，不写了
   #### 双向链表
   直接看图
-  ![](/img/a.png)
+  ![](https://github.com/dongaifeng/algorithm-study/blob/master/img/a.png)
   
 ### 栈
   stack 是一种受限制线性表，后进先出(LIFO), 类似往木桶里装砖块。
