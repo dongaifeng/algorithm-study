@@ -60,7 +60,7 @@ function run (arr) {
   quick(0, arr.length - 1)
 }
 
-function quick(i, j) {
+quick(i, j) {
   while (i < j) {
     let left = i
     let right = j
