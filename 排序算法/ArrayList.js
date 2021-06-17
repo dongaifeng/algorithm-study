@@ -136,7 +136,7 @@ ArrayList.prototype.quick = function (i, j) {
         j--;
       }
       if (i < j) {
-        this.arr[i++] =  this.arr[j];
+        this.arr[i++] =  this.arr[j];  // 这里是先赋值给arr[i],然后再++。一开始 i 没有变，pivot保存了++前的arr[i]
       }
       while ( this.arr[i] <= pivot && i < j) {  // 从前往后找比基准大的数
         i++;
