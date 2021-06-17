@@ -54,6 +54,7 @@ ArrayList.prototype.selectSort = function () {
 
 
 }
+
 // 插入排序
 ArrayList.prototype.insertSort = function () {
   let length = this.arr.length
@@ -148,19 +149,6 @@ ArrayList.prototype.quick = function (i, j) {
     this.quick( left, i - 1);
     this.quick( i + 1, right);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // let pivot = this.median(left, right)
   // let i = left

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .text {
+    display: none;
+  }
+
+  .on {
+    color: #333;
+  }
+
+  .off {
+    color: #eee;
+  }
+
+  .circle {
+    position: absolute;
+    display: inline-block;
+  }
+
+  #radio~label {
+    background-color: grey;
+  }
+
+  #radio~label .circle {
+    left: 0;
+    transition: all 0.3s;
+    --webkit-transition: all 0.3s;
+  }
+
+  #radio~label .on {
+    display: none;
+  }
+
+  #radio~label .off {
+    display: inline-block;
+  }
+
+  #radio:checked~label {
+    background: lime;
+  }
+
+  #radio:checked~label .circle {
+    left: 50px;
+  }
+
+  .circle {}
+
+  #radio:checked~label .on {
+    display: inline-block;
+  }
+
+  #radio:checked~label .off {
+    display: none;
+  }
+
+  label {
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    width: 80px;
+    border-top-left-radius: 15px 50%;
+    border-bottom-left-radius: 15px 50%;
+    border-top-right-radius: 15px 50%;
+    border-bottom-right-radius: 15px 50%;
+    box-shadow: 0 0 2px black;
+  }
+
+  label .circle {
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background-color: #eee;
+  }
+
+  label .text {
+    text-indent: 30px;
+    line-height: 28px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-shadow: 0 0 2px #ddd;
+  }
+
+  #radio {
+    display: none;
+  }
+
+  button {
+    color: #FFF;
+    background-color: #409EFF;
+    border-color: #409EFF;
+    display: inline;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 2px 5px;
+    -webkit-transition: .1s;
+    transition: .1s;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+</style>
+
+<style>
+  .handle-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: flex-start;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+  }
+
+  .handle-box .item1 {
+    flex-grow: 1;
+    font-weight: 600;
+  }
+
+  .handle-box .item2 {
+    flex-grow: 80;
+  }
+
+  .handle-box .item3 {
+    flex-grow: 10;
+  }
+
+  .tag-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    text-align: center;
+  }
+
+  .tags-item {
+    width: 60px;
+    height: 30px;
+    background-color: #E1EDFA;
+    margin: 10px 10px;
+    line-height: 30px;
+    color: #354A81;
+  }
+
+  .model {
+    display: none;
+  }
+
+  .show {
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    width: 30%;
+    height: 300px;
+    border: 1px solid #333;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-box {
+    margin: 40px auto;
+
+  }
+
+  .btn-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 50%;
+  }
+</style>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu {
+    display: none;
+    position: fixed;
+    width: 125px;
+  }
+
+  .menu ul li {
+    height: 30px;
+    width: 120px;
+    margin-top: -1px;
+    line-height: 30px;
+    border: 1px solid #eee;
+    text-align: center;
+    list-style: none;
+  }
+
+  .menu ul li:hover {
+    background: #ccc;
+    cursor: default;
+    user-select: none;
+  }
+</style>
+
+<body>
+  <!-- 操作栏 -->
+  <div class="handle-box">
+    <div class="item1">禁用特殊关键字</div>
+    <div class="container item2">
+      <input type="checkbox" id="radio" name="switch">
+      <label for="radio" class="radio">
+        <span class="circle"></span>
+        <span class="text on">ON</span>
+        <span class="text off">OFF</span>
+      </label>
+    </div>
+
+    <div class="item3">
+      <button value="showModel">新增</button>
+    </div>
+  </div>
+  <!-- 展示区 -->
+  <p>已禁用的特殊关键字</p>
+  <div class="tag-box" id="tagBox">
+
+  </div>
+  <!-- 模态框 -->
+  <div class="model" id="model">
+    <div class="input-box">
+      <span>请输入关键字</span>
+      <input type="text" name="" id="">
+    </div>
+
+    <div class="btn-box">
+      <button value="cancel">取消</button>
+      <button value="submit">确定</button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li>删除</li>
+    </ul>
+  </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  let model = document.getElementById('model')
+  let menu = document.getElementById('menu')
+  let arr = [111, 222, 333, 444]
+  let temp = '';
+  arr.forEach(item => {
+    temp = temp + `<div type="tag" value="${item}" class="tags-item">${item}</div>`
+  })
+  let tagBox = document.getElementById('tagBox');
+  tagBox.innerHTML = temp;
+
+  document.addEventListener('click', function (e) {
+    if (e.target.nodeName !== 'BUTTON') {
+      return false
+    }
+    var val = e.target.value;
+
+    switch (val) {
+      case 'cancel':
+        cancel()
+        break;
+      case 'submit':
+        submit()
+        break;
+      case 'showModel':
+        showModel()
+        break;
+      default:
+        break;
+    }
+    console.log(e.target.value)
+  })
+
+  document.oncontextmenu = function (e) {
+    var { innerHTML, className } = e.target
+    
+
+    if (className === 'tags-item') {
+      e.preventDefault();
+      var ev = event || window.event;
+      console.log(ev, '<----------')
+      var mX = event.clientX;
+      var mY = event.clientY;
+      menu.style.display = "block";
+      menu.style.left = mX + "px";
+      menu.style.top = mY + "px";
+      return false;   //取消window自带的菜单弹出来
+    }
+
+
+
+
+  }
+
+  //点击页面菜单消失
+  document.onclick = function () {
+    menu.style.display = "none";
+  }
+
+
+
+  function cancel() {
+    hide()
+  }
+
+  function showModel() {
+    show()
+  }
+
+  function submit() {
+
+  }
+
+  function show() {
+    model.classList.add("show");
+  }
+
+  function hide() {
+    model.classList.remove("show");
+  }
+
+
+</script>
